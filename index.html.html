@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+        <style>
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --bg-black-900: #000000;
+                --bg-black-100: #dddddd;
+                --bg-black-50: #eff0f4;
+                --text-black-900: #000000;
+                --text-black-700: #555555;
+                --text-black-600: #666666;
+                --text-black-300: #bbbbbb;
+                --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+                --outer-shadow-0: 0 o o  #d0d0d0, 0 0 0 #f8f8f8;
+                --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+            }
+
+            body {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: bold;
+            }
+
+            #banner {
+                background: url("light.jpg");
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+            }
+
+            .logo {
+                width: 20%;
+                position: absolute;
+                top: 1%;
+                left: 2%;
+            }
+
+            .banner-text {
+                text-align: center;
+                color: gray;
+                padding: 180px;
+            }
+
+            .banner-text h1 {
+                font-size: 100px;
+                font-family: lobster;
+            }
+
+            .banner-text p {
+                font-size: 20px;
+                font-style: italic;
+                color: palevioletred;
+            }
+
+            /*.banner-btn {
+                margin: 70px auto 0;
+            }
+
+            .banner-btn a {
+                width: 150px;
+                text-decoration: none;
+                display: inline-block;
+                margin: 0 10px;
+                padding: 12px 0;
+                color: gray;
+                border: .5px solid gray;
+                position: relative;
+                z-index: 1;
+            }
+
+            .banner-btn a span {
+                width: 50%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+
+            .banner-btn a:hover span {
+                width: 100%;
+            }
+
+            .banner-btn a:hover {
+                color: palevioletred;
+            }*/
+
+            @media screen and (max-width:770px) {
+                .banner-text h1 {
+                    flex-basis: 100%;
+                    margin-bottom: 30%;
+                    font-size: 50px;
+                }
+
+                .banner-text p {
+                    font-size: 20px
+                }
+
+                .logo {
+                    width: 50%;
+                }
+
+            }
+
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .justify-content-between {
+                justify-content: space-between;
+            }
+
+            .outer-shadow {
+                box-shadow: var(--text-black-900);
+            }
+
+            .inner-shadow {
+                box-shadow: var(--inner-shadow);
+            }
+
+            .hover-in-shadow {
+                position: relative;
+                z-index: 1;
+            }
+
+            .hover-in-shadow:hover {
+                box-shadow: var(--text-black-900)
+            }
+
+            .hover-in-shadow:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transition: all 0.3s ease;
+            }
+
+            .hover-in-shadow:hover:after {
+                box-shadow: var(--inner-shadow);
+            }
+
+            .navbar {
+                overflow: hidden;
+                background-color: transparent;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                }
+
+                .navbar a {
+                float: right;
+                display: block;
+                color: gray;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 12px;
+                padding-right: 10%;
+                }
+
+            .navbar a:hover {
+                background: #ddd;
+                color: black;
+                }
+
+            #feature {
+                width: 100%;
+                padding: 70px 0;
+            }
+
+            .title-text {
+                text-align: center;
+                padding-bottom: 70px;
+            }
+
+            .title-text p {
+                margin: auto;
+                font-size: 20px;
+                color: violet;
+                font-weight: bold;
+                position: relative;
+                z-index: 1;
+                display: inline-block;
+            }
+
+            .title-text p::after {
+                content: '';
+                width: 50px;
+                height: 35px;
+                background: linear-gradient(gray,#fff);
+                position: absolute;
+                top: -20px;
+                left: 0;
+                z-index: -1;
+                transform: rotate(10deg);
+                border-top-left-radius: 35px;
+                border-bottom-right-radius: 35px;
+            }
+
+            .title-text h1 {
+                font-size: 50px;
+            }
+
+            .feature-box {
+                width: 80%;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                text-align: center;
+            }
+
+            #about {
+                height: 65vh;
+                width: 100%;
+                padding: 70px 0;
+                background: #efefef;
+                position: relative;
+            }
+
+            .about-img {
+                max-width: 370px;
+                opacity: 0.1;
+                position: absolute;
+                left: 50%;
+                top: 35%;
+                transform: translate(-50%, -50%);
+            }
+
+            .feature {
+                flex-basis: 50%;
+            }
+
+            .features h1 {
+                text-align: left;
+                margin-bottom: 10px;
+                font-weight: 100;
+                color: gray;
+            }
+
+            .features-desc {
+                display: flex;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+
+            .feature-text {
+                padding: 0.2 ;
+            }
+
+            #service {
+                width: 100%;
+                padding: 70px 0;
+                background: #fff;
+            }
+
+            .service-box {
+                width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                margin: auto;
+            }
+
+            .single-service {
+                flex-basis: 48%;
+                text-align: center;
+                border-radius: 7px;
+                margin-bottom: 20px;
+                color: #fff;
+                position: relative;
+            }
+
+            .single-service img {
+                width: 250px;
+                border-radius: 7px;
+            }
+
+            .overlay {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                border-radius: 7px;
+                cursor: pointer;
+                background-color: gray;
+                opacity: 0;
+                transition: 1s;
+            }
+
+            .single-service:hover .overlay {
+                opacity: 1;
+            }
+
+            .service-desc {
+                width: 80%;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                opacity: 0;
+                transform: translate(-50%);
+                transition: 1s;
+            }
+
+            hr {
+                background: #fff;
+                height: 2px;
+                border: 0;
+                margin: 15px auto;
+                width: 60%;
+            }
+
+            .service-desc p {
+                font-size: 14px;
+            }
+
+            .single-service:hover .service-desc {
+                bottom:40px;
+                opacity: 1;
+            }
+
+            @media screen and (max-width:770px) {
+                .single-service {
+                    flex-basis: 100%;
+                    margin-bottom: 30px;
+                }
+
+                .service-desc p {
+                    font-size: 12px;
+                }
+
+                hr {
+                    margin: 5px auto;
+                }
+            }
+
+            #footer {
+                padding: 100px 0 20px;
+                background: #efefef;
+                position: relative;
+            }
+
+            .footer-img {
+                max-width: 370px;
+                opacity: 0.1;
+                position: absolute;
+                left: 50%;
+                top: 35%;
+                transform: translate(-50%, -50%);
+            }
+
+            .footer-row {
+                width: 80%;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .footer-left, .footer-right {
+                flex-basis: 45%;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+
+            .footer-row h1{
+                margin: 10px 0;
+            }
+
+            .footer-row p {
+                margin: 35px;
+            }
+
+            @media screen and (max-width:770px) {
+                .footer-left, .footer-right {
+                    flex-basis: 100%;
+                    font-size: 14px;
+                }
+            }
+
+            .social-links {
+                text-align: center;
+            }
+
+            .social-links .img {
+                height: 40px;
+                width: 40px;
+                font-size: 20px;
+                line-height: 40px;
+                border: 1px solid gray;
+                margin: 40px 5px 0;
+                cursor: pointer;
+            }
+
+            .social-links p {
+                font-size: 12px;
+                margin-top: 20px;
+            }
+        
+        </style>
+    </head>
+    <body>
+
+<section id="banner">
+    <img src="logo.png" class="logo">
+    <div class="banner-text">
+        <h1>Nkele's Hair Emporium</h1>
+    </br></br>
+        <p>Dedicated to the Beauty of a Being!</p>
+        <div class="banner-btn">
+            <!--<a href="#"><span></span>Book Now!</a>
+            <a href="#"><span></span>About Nkele</a>-->
+        </div>
+    </div>
+</section>
+
+<section id="navbar">
+    <div class="navbar">
+        <a href="#footer">Contact</a>
+        <a href="#service">Services</a>
+        <a href="#about">About</a>
+        <a href="#banner">Home</a>
+      </div>
+      
+    </nav>
+</div>
+</section>
+
+<section id="about">
+    <img src="hair.jpg" class="about-img">
+    <div class="title-text">
+        <p>ABOUT</p>
+        <h1>What is Nkele's Hair Emporium</h1>
+    </div>
+    <div class="feature-box">
+        <div class="features">
+            <h1>Nkele's Hair Emporium...</h1>
+            <div class="features-desc">
+                
+                <div class="feature-text"></div>
+                <p>Is a hair business platform/beauty professional that specializes in the art of twisting and braiding hair, which gives women more reasons to be beautiful in different ways. Nkele helps to maintain and design different hairstyles, and is also responsible for shampooing, plaiting and braiding African hair!</p>
+                </div>
+                <div class="feature-text">
+                <p>She also teach her clients about the best ways to care for their hair. Now that is the best hairstylist to consider!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="service">
+    <div class="title-text">
+        <p>SERVICES</p>
+        <h1>What Nkele does</h1>
+    </div>
+    <div class="service-box">
+        <div class="single-service">
+            <img src="triangle.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Triangle Braids</h3>
+                <hr>
+                <p>Triangle Braids at R180</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="dread.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Wrapped Faux Locks</h3>
+                <hr>
+                <p>R300</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="blue.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Braids</h3>
+                <hr>
+                <p>R200</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="bob.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Bob Box Braids</h3>
+                <hr>
+                <p>R180</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="thando.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Bob Braids</h3>
+                <hr>
+                <p>R180</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="bhengi.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>AmaBhengi (Cornrows)</h3>
+                <hr>
+                <p>R150</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="grapes.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Soft Dreads Wig</h3>
+                <hr>
+                <p>R220</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="gold.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Braids</h3>
+                <hr>
+                <p>R200</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="yanga.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Braids</h3>
+                <hr>
+                <p>R200</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="twist.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Twist</h3>
+                <hr>
+                <p>R200 - R450 (depending on the length</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="weave.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Wig Wash/Treatment</h3>
+                <hr>
+                <p>R100</p>
+            </div>
+        </div>
+
+        <div class="single-service">
+            <img src="braid.jpg">
+            <div class="overlay"></div>
+            <div class="service-desc">
+                <h3>Braids</h3>
+                <hr>
+                <p>R200 - R450 (depending on the length)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="footer">
+    <img src="hair.jpg" class="about-img">
+    <div class="title-text">
+        <p>CONTACT</p>
+        <h1>Connet with Nkele to Book Your Appointment</h1>
+    </div>
+    <div class="footer-row">
+        <div class="footer-left">
+            <h1>Operating Hours</h1>
+            <p><img src="clock.png"> Mondays to Fridays - 08:00 to 17:30</p>
+            <p><img src="clock.png"> Saturdays and Sundays - 09:00 to 16:30 </p>
+        </div>
+        <div class="footer-right">
+            <h1>Get In Touch</h1>
+            <p><img src="cellphone.png"> +27 84 064 1539</p>
+            <p><img src="pin.png"> Khayelitsha Matiloshe Street 7784</br> Western Cape</p>
+        </div>
+    </div>
+
+   <div class="social-links">
+       <a href=""><img src="whatsapp.png"></a>
+       <a href=""><img src="facebook.png"></a>
+       <a href=""><img src="instagram.png"></a>
+       <p class="copyright-text">&copy; 2021 Done by Cebokazi Makasi - All Rights Reserve</p>
+   </div>
+</section>
+
+
+</body>
+
+
+</html>
